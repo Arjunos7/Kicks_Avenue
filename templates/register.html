@@ -2,53 +2,6 @@
 {% load static %}
 {% block content %}
 
-<div class="signin-container">
-    <div class="image-container">
-        <img src="{% static 'images/converse_signup.jpg' %}" alt="Sign In Image">
-    </div>
-    <div class="signin-form">
-        <h2>Sign in</h2>
-        <form>
-            <div class="form-group">
-                <label for="first-name">
-                    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="last-name">
-                    <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="email">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="username">
-                    <input type="text" id="username" name="username" placeholder="Username" required>
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="password">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </label>
-            </div>
-
-            <button type="submit">sign in</button>
-        </form>
-        <div class="alternative-options">
-            <a href="#">Already have an account??</a>
-            <p>Or signup with</p>
-            <div class="social-login">
-                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="google"><i class="fab fa-google"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -197,5 +150,54 @@
         }
     }
 </style>
+<div class="signin-container">
+    <div class="image-container">
+        <img src="{% static 'images/converse_signup.jpg' %}" alt="Sign In Image">
+    </div>
+    <div class="signin-form">
+        <h2>Sign in</h2>
+        <form>
+            <div class="form-group">
+                <label for="first-name">
+                    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="last-name">
+                    <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="email">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="username">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="password">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </label>
+            </div>
+
+            <button type="submit">sign in</button>
+        </form>
+        <div class="alternative-options">
+            <p>Or signup with</p>
+            <div class="social-login">
+                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="google"><i class="fab fa-google"></i></a>
+            </div>
+        </div>
+        <br><a href="{% url 'customers:login' %}">Already have an account??</a>
+
+    </div>
+</div>
+
+
 
 {% endblock %}
