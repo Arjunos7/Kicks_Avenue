@@ -1,0 +1,45 @@
+{% extends "blank_layout.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+
+        </div>
+        <div class="row row-pb-md">
+            {% for i in c %}
+                {% if forloop.counter0|divisibleby:3 %}
+                    {% if not forloop.first %}
+                        </div> <!-- Close previous row -->
+                    {% endif %}
+                    <div class="row row-pb-md"> <!-- Open a new row -->
+                {% endif %}
+                <div class="col-lg-4 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="{% url 'products:product_detail' i.name %}" class="prod-img">
+                            <img src="{{ i.image.url }}" class="img-fluid small-img" alt="Free html5 bootstrap 4 template" style="height:400px;width:400px">
+                        </a>
+                        <div class="desc">
+                            <h2><a>{{ i.name }}</a></h2>
+                            <span class="price">${{ i.price }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.last %}
+                    </div> <!-- Close the last row -->
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+	
+{% endblock %}
+
