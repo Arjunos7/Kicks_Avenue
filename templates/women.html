@@ -6,16 +6,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<div class="breadcrumbs-img" style="background-image: url({% static 'images/cover-img-1.jpg' %});">
-							<h2>Women's</h2>
+						{% if second_category %}
+                    <div class="breadcrumbs-img" style="background-image: url('{{ second_category.image.url }}'); background-size: cover; background-position: center; max-width: 100%; height: 300px;">
+							<h2>{{ second_category.name }}</h2>
 						</div>
-						<div class="menu text-center">
-							<p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a href="#">Sale</a></p>
-						</div>
+                      {% endif %}
 					</div>
 				</div>
 			</div>
-		</div>
+		</div><br>
 
 		<div class="colorlib-featured">
 			<div class="container">
