@@ -24,7 +24,7 @@
                     <div class="featured">
                         <div class="featured-img featured-img-2" style="background-image: url({{ i.image.url }});">
                             <h2>{{ i.name }}</h2>
-                            <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                          <a href="{% url 'products:women_product_list' i.name %}" class="btn btn-primary btn-lg">Shop now</a>
                         </div>
                     </div>
                 </div>

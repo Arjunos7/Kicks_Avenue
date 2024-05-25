@@ -1,0 +1,67 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    .custom-heading {
+        position: absolute;
+        top: 120px; /* Adjust this value to move the heading down */
+        left: 35%;
+        transform: translateX(-50%);
+    }
+</style>
+
+<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm custom-heading">
+    <h2>{{ category }} shoes for men</h2>
+</div>
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="container">
+            <div class="row">
+                {% for i in products %}
+                    <div class="col-md-4 mb-4 text-center">
+                        <div class="product-entry border">
+                            <a href="{% url 'products:product_detail' i.name %}" class="prod-img">
+                                <img src="{{ i.image.url }}" class="img-fluid" alt="Free html5 bootstrap 4 template" style="height:400px;width:400px">
+                            </a>
+                            <div class="desc">
+                                <h2><a >{{ i.name }}</a></h2>
+                                <span class="price">${{ i.price }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                <h2>Trusted Partners</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col partner-col text-center">
+                <img src="{% static 'images/brand-1.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{% static 'images/brand-2.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{% static 'images/brand-3.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{% static 'images/brand-4.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{% static 'images/brand-5.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
