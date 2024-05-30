@@ -48,6 +48,6 @@ def user_login(request):
 
 
 @login_required
-def user_logout(request):
+def user_logout(request):              #logout function
     logout(request)
     return redirect('customers:login')
