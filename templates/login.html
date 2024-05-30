@@ -12,8 +12,8 @@
         <form>
 
             <div class="form-group">
-                <label for="username">
-                    <input type="text" id="username" name="username" placeholder="Username" >
+                <label >
+                    <input type="email" name="e" placeholder="Email" >
                 </label>
             </div>
             <div class="form-group">
@@ -25,12 +25,7 @@
             <button type="submit">Login</button>
         </form>
         <div class="alternative-options">
-            <p>Or login with</p>
-            <div class="social-login">
-                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="google"><i class="fab fa-google"></i></a>
-            </div>
+            <a href="">Forget Password??</a><br>
             <a href="{% url 'customers:register' %}">Don't have an account??</a>
         </div>
     </div>

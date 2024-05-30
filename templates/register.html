@@ -156,48 +156,41 @@
     </div>
     <div class="signin-form">
         <h2>Sign in</h2>
-        <form>
+        <form method="POST">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="first-name">
-                    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                    <input type="text" id="first-name" name="f" placeholder="First Name" required>
                 </label>
             </div>
             <div class="form-group">
                 <label for="last-name">
-                    <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                    <input type="text" id="last-name" name="l" placeholder="Last Name" required>
                 </label>
             </div>
             <div class="form-group">
                 <label for="email">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="email" id="email" name="e" placeholder="Email" required >
                 </label>
             </div>
             <div class="form-group">
                 <label for="username">
-                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="text" id="username" name="u" placeholder="Username" required>
                 </label>
             </div>
             <div class="form-group">
                 <label for="password">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="password" name="p" placeholder="Password" required>
                 </label>
             </div>
             <div class="form-group">
                 <label for="password">
-                    <input type="password" id="confirmpassword" name="password" placeholder="Confirm Password" required>
+                    <input type="password" id="confirmpassword" name="cp" placeholder="Confirm Password" required>
                 </label>
             </div>
 
             <button type="submit">sign in</button>
         </form>
-        <div class="alternative-options">
-            <p>Or signup with</p>
-            <div class="social-login">
-                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="google"><i class="fab fa-google"></i></a>
-            </div>
-        </div>
         <br><a href="{% url 'customers:login' %}">Already have an account??</a>
 
     </div>
