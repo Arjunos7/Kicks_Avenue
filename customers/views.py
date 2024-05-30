@@ -21,7 +21,7 @@ def register(request):
             return render(request, 'register.html')
     return render(request, 'register.html')
 
-# login with email
+
 def user_login(request):
     if request.method == "POST":
         e = request.POST['e']
@@ -48,6 +48,6 @@ def user_login(request):
 
 
 @login_required
-def user_logout(request):              #logout function
+def user_logout(request):
     logout(request)
     return redirect('customers:login')
