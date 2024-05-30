@@ -2,31 +2,39 @@
 {% load static %}
 {% block content %}
 
-
 <div class="signin-container">
     <div class="image-container">
         <img src="{% static 'images/nike_login.jpg' %}" alt="Sign In Image">
     </div>
     <div class="signin-form">
         <h2>Login</h2>
-        <form>
-
+        <!-- Display error messages here -->
+        {% if messages %}
+            <div class="error-messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
             <div class="form-group">
-                <label >
-                    <input type="email" name="e" placeholder="Email" >
+                <label>
+                    <input type="email" name="e" placeholder="Email" required>
                 </label>
             </div>
             <div class="form-group">
                 <label for="password">
-                    <input type="password" id="password" name="password" placeholder="Password" >
+                    <input type="password" id="password" name="p" placeholder="Password" required>
                 </label>
             </div>
-
             <button type="submit">Login</button>
         </form>
         <div class="alternative-options">
-            <a href="">Forget Password??</a><br>
-            <a href="{% url 'customers:register' %}">Don't have an account??</a>
+            <a href="">Forget Password?</a><br>
+            <a href="{% url 'customers:register' %}">Don't have an account?</a>
         </div>
     </div>
 </div>
@@ -84,11 +92,6 @@
         align-items: center;
     }
 
-    .form-group .icon {
-        margin-right: 10px;
-        font-size: 18px;
-    }
-
     .form-group input {
         width: 100%;
         padding: 10px;
@@ -100,15 +103,6 @@
 
     .form-group input:focus {
         border-color: #007bff;
-    }
-
-    .remember-me {
-        display: flex;
-        align-items: center;
-    }
-
-    .remember-me input {
-        margin-right: 10px;
     }
 
     button {
@@ -141,37 +135,13 @@
         text-decoration: underline;
     }
 
-    .social-login {
-        margin-top: 10px;
-    }
-
-    .social-login a {
-        margin: 0 5px;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
+    .error-messages {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
         border-radius: 5px;
-        color: #fff;
-        font-size: 16px;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-    }
-
-    .social-login a.facebook {
-        background-color: #3b5998;
-    }
-
-    .social-login a.twitter {
-        background-color: #1da1f2;
-    }
-
-    .social-login a.google {
-        background-color: #db4437;
-    }
-
-
-    .social-login a:hover {
-        opacity: 0.8;
+        margin-bottom: 20px;
     }
 
     @media (min-width: 768px) {

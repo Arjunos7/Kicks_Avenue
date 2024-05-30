@@ -88,11 +88,11 @@
 				 <li class="nav-item ">
                     <a class="nav-link" style="font-weight: bold;" href="{% url 'customers:register' %}">Register</a>
                 </li>
-
+                    {% if user.is_authenticated %}
 				  <li class="nav-item ">
-                    <a class="nav-link" style="font-weight: bold;" href="">Logout</a>
+                    <a class="nav-link" style="font-weight: bold;" href="{% url 'customers:logout' %}">Logout</a>
                 </li>
-
+                 {% endif %}
                 <li class="nav-item ">
                     <a class="nav-link" style="font-weight: bold;" href="{% url 'products:contact' %}">Contact</a>
                 </li>
