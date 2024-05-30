@@ -21,7 +21,7 @@ def register(request):
             return render(request, 'register.html')
     return render(request, 'register.html')
 
-
+# login with email
 def user_login(request):
     if request.method == "POST":
         e = request.POST['e']
