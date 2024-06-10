@@ -147,7 +147,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'arjunsudha212@gmail.com'  # Replace 'your_email' with your actual Gmail email address
-EMAIL_HOST_PASSWORD = 'Arjunsudha@20001'  # Replace 'your_password' with your actual Gmail password
+EMAIL_HOST_PASSWORD = 'Arjunsudha@2001'  # Replace 'your_password' with your actual Gmail password
 
 
 
