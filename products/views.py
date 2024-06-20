@@ -29,7 +29,7 @@ def men(request):
     men_category = Category.objects.get(name='men')
     products = Product.objects.filter(category=men_category)
 
-    # Render the template with the fetched category and subcategories
+
     return render(request, 'men.html', {
         'first_category': first_category,
         'subcategories': subcategories,
