@@ -39,7 +39,7 @@ def men(request):
 
 
 def men_product_list(request, category):
-    men_category = Category.objects.get(name='men')  # Fetching the 'men' category
+    men_category = Category.objects.get(name='men')  # Fetching the men category
     subcategories = SubCategory.objects.filter(category=men_category)  # Filtering subcategories belonging to the 'men' category
     products = Product.objects.filter(category=men_category, subcategory__name=category)  # Filtering products belonging to the 'men' category and the specified subcategory name
     return render(request, 'men_product_list.html', {'products': products, 'category': category})
