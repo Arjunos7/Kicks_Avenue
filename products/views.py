@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from .models import Product,Category,SubCategory
+from .models import Product,Category,SubCategory,ProductReview
+from .forms import ProductReviewForm
+from django.contrib.auth.models import User
+from django.http import HttpResponse,JsonResponse
+
 
 def index(request):
     c=Product.objects.all()
@@ -67,6 +71,35 @@ def women(request):
 
 def product_detail(request,p):
     p=Product.objects.get(name=p)
-    return render(request,'product-detail.html',context={'p':p})
+    review=ProductReview.objects.filter(product=p).order_by("-date")
+    review_form=ProductReviewForm()
+    return render(request,'product-detail.html',context={'p':p,'review':review,'review_form':review_form})
+
+
+def ajax_add_review(request,pid):
+    product=Product.objects.get(pk=pid)
+    user=request.user
+
+    review=ProductReview.objects.create(
+        user=user,
+        product=product,
+        review=request.POST['review'],
+        rating=request.POST['rating'],
+
+    )
+
+    context={
+        'user':user.username,
+        'review':request.POST['review'],
+        'rating':request.POST['rating'],
+    }
+
+    return JsonResponse(
+        {
+            'bool': True,
+            'context': context,
+        }
+
+    )
 
 

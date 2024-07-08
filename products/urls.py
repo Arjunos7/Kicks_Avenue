@@ -14,5 +14,6 @@ urlpatterns = [
     path('products/women/<str:category>/', views.women_product_list, name='women_product_list'),
     path('women/',views.women,name='women'),
     path('product_detail/<p>',views.product_detail,name='product_detail'),
+    path('ajax-add-review/<int:pid>/',views.ajax_add_review,name='ajax-add-review'),
 
 ]
