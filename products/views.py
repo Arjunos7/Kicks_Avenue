@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product,Category,SubCategory,ProductReview
 from .forms import ProductReviewForm
 from django.contrib.auth.models import User
@@ -69,37 +69,44 @@ def women(request):
     })
 
 
-def product_detail(request,p):
-    p=Product.objects.get(name=p)
-    review=ProductReview.objects.filter(product=p).order_by("-date")
-    review_form=ProductReviewForm()
-    return render(request,'product-detail.html',context={'p':p,'review':review,'review_form':review_form})
 
 
-def ajax_add_review(request,pid):
-    product=Product.objects.get(pk=pid)
-    user=request.user
+def product_detail(request, p):
+    # Fetch the product by name
+    p = Product.objects.get(name=p)
 
-    review=ProductReview.objects.create(
-        user=user,
-        product=product,
-        review=request.POST['review'],
-        rating=request.POST['rating'],
+    # Fetch the reviews related to this product, ordered by date
+    reviews = ProductReview.objects.filter(product=p).order_by("-date")
 
-    )
+    if request.method == 'POST':
+        # Handle form submission
+        review_form = ProductReviewForm(request.POST)
+        if review_form.is_valid():
+            # Save the form data but don't commit to the database yet
+            new_review = review_form.save(commit=False)
+            # Assign the product and the user to the review
+            new_review.product = p
+            new_review.user = request.user
+            # Save the review to the database
+            new_review.save()
+            # Redirect to the same product detail page
+            return redirect('products:product_detail', p=p.name)
+    else:
+        # If it's a GET request, create a blank form
+        review_form = ProductReviewForm()
 
-    context={
-        'user':user.username,
-        'review':request.POST['review'],
-        'rating':request.POST['rating'],
-    }
+    # Precompute star ratings
+    rating_data = []
+    for r in reviews:
+        rating_data.append({
+            'user': r.user.username,
+            'date': r.date,
+            'review': r.review,
+            'rating': r.rating
+        })
 
-    return JsonResponse(
-        {
-            'bool': True,
-            'context': context,
-        }
-
-    )
-
-
+    return render(request, 'product-detail.html', {
+        'p': p,
+        'reviews': rating_data,
+        'review_form': review_form
+    })
