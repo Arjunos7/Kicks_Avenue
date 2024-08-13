@@ -1,7 +1,7 @@
 {% extends "blank_layout.html" %}
 {% load static %}
 {% block content %}
-<!--to display all the products-->
+<!--to display all  products-->
 
 
 
@@ -14,7 +14,7 @@
             {% for i in c %}
                 {% if forloop.counter0|divisibleby:3 %}
                     {% if not forloop.first %}
-                        </div> <!-- Close previous row -->
+                        </div>
                     {% endif %}
                     <div class="row row-pb-md"> <!-- Open a new row -->
                 {% endif %}
